@@ -6,16 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://BlueStella.com">
-  <title>Tag: Markdown | ShaneStella</title>
+  <title>几道简单的c语言编程题 | ShaneStella</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="我要变强">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ShaneStella">
-<meta property="og:url" content="http://bluestella.com/tags/Markdown/index.html">
+  <meta name="description" content="以下内容为大一上学期，学校布置的作业中较简单的题目。虽说简单但是其中也有一些坑和好的思想，顺便可以复习基础知识，贴在这里希望对大家有所帮助。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="几道简单的c语言编程题">
+<meta property="og:url" content="http://bluestella.com/undefined/%E5%87%A0%E9%81%93%E7%AE%80%E5%8D%95%E7%9A%84c%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B%E9%A2%98/index.html">
 <meta property="og:site_name" content="ShaneStella">
-<meta property="og:description" content="我要变强">
+<meta property="og:description" content="以下内容为大一上学期，学校布置的作业中较简单的题目。虽说简单但是其中也有一些坑和好的思想，顺便可以复习基础知识，贴在这里希望对大家有所帮助。">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-01-18T10:25:14.000Z">
+<meta property="article:modified_time" content="2020-01-18T10:38:23.547Z">
 <meta property="article:author" content="ShaneStella">
+<meta property="article:tag" content="C">
+<meta property="article:tag" content="简单">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="ShaneStella" type="application/atom+xml">
@@ -170,64 +174,413 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-几道简单的c语言编程题" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/undefined/%E5%86%99blog%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" class="archive-article-date">
-  	<time datetime="2020-01-12T10:55:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-12</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+              <!--显示阅读次数-->
+        
+        <br/>
+        <a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+        <span class="icon-sort"></span>
+        <span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
+                  阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
+        </span>
+        </a>
+        
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/undefined/%E5%86%99blog%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/">写blog的基本操作</a>
+    <h1 class="article-title" itemprop="name">
+      几道简单的c语言编程题
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/undefined/%E5%87%A0%E9%81%93%E7%AE%80%E5%8D%95%E7%9A%84c%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2020-01-18T10:25:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>以下内容为大一上学期，学校布置的作业中较简单的题目。虽说简单但是其中也有一些坑和好的思想，顺便可以复习基础知识，贴在这里希望对大家有所帮助。</p>
+<a id="more"></a>
+<h2 id="1-递归求阶乘"><a href="#1-递归求阶乘" class="headerlink" title="1.递归求阶乘"></a>1.递归求阶乘</h2><p><strong>分析</strong>：<code>n!=1*2*...*n</code><br>那么我们有两种方法</p>
+<ul>
+<li>递归</li>
+</ul>
+<p><strong>思路</strong>：根据阶乘的规律<code>n！=n*（n-1）！</code><br>定义函数f（x），使函数返回<code>x*f（x-1）</code>的值，直到n=1。经过函数调用本身求出结果。<br><strong>代码</strong>：</p>
+<pre><code>#include&lt;stdio.h&gt;
+int cnt(int n);//调用声明函数
+int main()
+{
+    int n;
+    scanf(&quot;%d&quot;,&amp;n);
+    printf(&quot;%d&quot;,cnt(n));
+    return 0;
+}
+
+int cnt(int n)//定义声明函数
+{
+    if(n&gt;0)
+    n*=cnt(n-1);
+    else n=1;
+    return n;
+}</code></pre><ul>
+<li>循环</li>
+</ul>
+<p><strong>思路</strong>：由于<code>n！=n*(n-1)*...*1</code>，则从a=1开始，+1之后与a相乘。<br><strong>代码</strong>：</p>
+<pre><code>#include&lt;stdio.h&gt;
+int main()
+{
+    int n;
+    scanf(&quot;%d&quot;,&amp;n);
+    int a=1;    //a要初始化为1 
+    for(int i=1;i&lt;=n;i++) //注意i应从1取到n，因此判断条件为&lt;=
+    a=a*i;
+    printf(&quot;%d&quot;,a);
+    return 0;
+}</code></pre><h2 id="2-分制转换"><a href="#2-分制转换" class="headerlink" title="2.分制转换"></a>2.分制转换</h2><p><strong>题目</strong>：给出一个百分制成绩，要求输出成绩等级‘A’（90分及90分以上），‘B’（80到89分），’C’（70到79分），’D’（60到69分），’E’（60分以下）。<br>输入格式<br>百分制成绩，整数，例如，100，89<br>输出格式<br>等级制成绩，例如A，B，C等等<br>eg85 B<br><strong>分析</strong>：这道题很简单，在我复习重写的时候发现比以前写的简洁了不少，因为用到了映射的思想，使分数由5类简化为三类：100分，60到99分，60分以下。<br><strong>代码</strong>：</p>
+<pre><code>#include&lt;stdio.h&gt;
+int main()
+{
+    int s;
+    scanf(&quot;%d&quot;,&amp;s);
+    s/=10;//成绩映射为0-10 
+    if(s==10)//10（满分）的情况 
+    printf(&quot;A&quot;);
+    else if(s&gt;=6)//将6到9转换为字母等级 
+    printf(&quot;%c&quot;,(&apos;E&apos;-s+5));
+    else printf(&quot;E&quot;);//小于6（不及格）的情况
+    return 0;
+}</code></pre><h2 id="3-判断是否为素数-lt-1000"><a href="#3-判断是否为素数-lt-1000" class="headerlink" title="3.判断是否为素数(&lt;1000)"></a>3.判断是否为素数(&lt;1000)</h2><p><strong>分析</strong>：素数为只能被1和自己整除的数，因此我们可以通过循环，从2开始遍历比数小的所有数。<br><strong>优化</strong>：<br>2的倍数非素数，因此先判断是否为2的倍数。<br>判断某个数是否为因数时，可以一起决定多个数是否为因数。<br><em>比如判断11是否为素数，要从2到9判断，而2非因数，同时可以确定6到10也非因数，因为2乘这些数大于11，因此不可能有比2大的数与6到10相乘得11.</em><br><strong>代码</strong>：</p>
+<pre><code>#include&lt;stdio.h&gt;
+int main()
+{
+    int n;
+    int r=1; //用r记录是否为素数。1为素数0非素数 
+    scanf(&quot;%d&quot;,&amp;n);
+    //大于2的偶数非素数
+    if((n/2&gt;1)&amp;&amp;(n%2==0)) 
+    r=0;
+    //判断是否为素数
+    for(int i=3;r==1&amp;&amp;i*i&lt;=n;i+=2) //更新直接+2，因到只用判断奇数
+    {
+        if(n%i==0) 
+        {
+            r=0;
+            break; //跳出for循环
+        }
+    }
+    //通过r的值（是否为素数）进行输出
+    if(r==0)
+    printf(&quot;NO&quot;);
+    else
+    printf(&quot;YES&quot;);
+    return 0;
+}</code></pre><h2 id="4-今天是第几天"><a href="#4-今天是第几天" class="headerlink" title="4.今天是第几天"></a>4.今天是第几天</h2><p><strong>题目</strong>：输入三个整数为年月日 ,输出是那一年的第几天<br>eg：输入：1990 9 20  输出：263</p>
+<pre><code>#include&lt;stdio.h&gt;
+int main()
+{
+    int y,m,d;
+    scanf(&quot;%d%d%d&quot;,&amp;y,&amp;m,&amp;d);
+    int r=d; //结果初始化为天数d
+    for(int i=1;i&lt;m;i++)//逐月增加天数：从1月加到m-1月 
+    {
+        switch(i) 
+        {
+            case 2:
+            r+=28;
+            break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+            r+=30;
+            break;
+            default://31天的月份较多放在default中 
+            r+=31;            
+        }
+    }
+    //判断平年闰年，若为闰年2月有29天，再加1
+    if((y%400==0)||((y%4==0)&amp;&amp;(y%100!=0))) 
+    r++;
+    printf(&quot;%d&quot;,r);
+    return 0;
+}</code></pre><h2 id="5-按要求输出"><a href="#5-按要求输出" class="headerlink" title="5.按要求输出"></a>5.按要求输出</h2><p><strong>题目</strong>：写一程序，输入为三行，第一行为整数a、第二行为字符c、第三行为整数b。(0&lt;a,b&lt;100000)。<br>输出共四行。第一行依次输出a,b,c，三个值之间用一个空格分隔；第二依次输出a+b,a-b,a* b,a/b,a%b的值，每个值之间用一个空格分隔；第三行输出a和b的比率（浮点数，精确到小数点后两位）；第四行输出a和b的百分比率（浮点数，精确到小数点后两位）。具体格式见输出样例。<br>输入样例<br>    12<br>    b<br>    234<br>输出样例<br>    12 234 b<br>    246 -222 2808 0 12<br>    The ratio of 12 versus 234 is 0.05.<br>    The ratio of 12 / 234 is 5.13%.<br><strong>代码</strong>：</p>
+<pre><code>#include&lt;stdio.h&gt;
+ int main()
+ {
+    //输出控制字符：加\；输出%：%% 
+    long long a,b; //整型出现乘法：用lld
+    char c;
+    scanf(&quot;%lld&quot;,&amp;a);
+    scanf(&quot;\n%c&quot;,&amp;c);
+//scanf：1.按格式要求。2.输入非c时自动忽略前导空白符号,不用加\n。3.输入为c时会读入空白符号-&gt;如何解决上一行的换行符残留：加\n或用getchar 
+    scanf(&quot;%lld&quot;,&amp;b);
+    printf(&quot;%lld %lld %c\n&quot;,a,b,c);
+    printf(&quot;%lld %lld %lld %lld %lld\n&quot;,a+b,a-b,a*b,a/b,a%b);
+    printf(&quot;The ratio of %lld versus %lld is %.2lf.\n&quot;,a,b,(double)a/b);
+    printf(&quot;The ratio of %lld / %lld is %.2lf%%.&quot;,a,b,100*(double)a/b);
+    return 0;
+ }</code></pre><h2 id="6-按要求输出"><a href="#6-按要求输出" class="headerlink" title="6.按要求输出"></a>6.按要求输出</h2><p><strong>题目</strong>：一程序，输入依次为一个整数a、一个浮点数f、一个整数b。(-10000&lt;a,b,f&lt;10000)。<br>输出共五行。第一行依次输出a,f,b，每个数占位10个字符位，右对齐。任意两个数之间不添加空格，f精确到小数点后一位；第二行依次输出a,f,b，每个数占位10个字符位，带正负号，左对齐，f精确到小数点后两位。任意两个数之间不添加空格。末尾输出字符串Hello；第三行输出35个#；第四行依次输出a,f,b，每个数占位10个字符位，包含正负号，右对齐，f精确到小数点后两位，任意两个数之间不添加空格；第五行连续输出三组0123456789。<br>输入样例<br>12 34.567 89<br>输出样例<br>        12      34.6        89<br>+12       +34.57    +89       Hello<br>###################################<br>       +12    +34.57       +89<br>012345678901234567890123456789<br><strong>代码</strong>：</p>
+<pre><code>#include&lt;stdio.h&gt;
+int main()
+{
+    int a,b;
+    double f;
+    scanf(&quot;%d %lf %d&quot;,&amp;a,&amp;f,&amp;b); //double类型输入用lf
+    //+为整数时显示+；-左对齐（默认右对齐）；%a.bf保留小数点后b位，所占长度至少为a
+    printf(&quot;%10d%10.1lf%10d\n&quot;,a,f,b);
+    printf(&quot;%-+10d%-+10.2lf%-+10dHello\n&quot;,a,f,b);
+    printf(&quot;###################################\n&quot;);
+    printf(&quot;%+10d%+10.2lf%+10d\n&quot;,a,f,b);
+    for(int i=0;i&lt;3;i++)
+    printf(&quot;0123456789&quot;);
+    return 0;
+}</code></pre><h2 id="7-温度转换"><a href="#7-温度转换" class="headerlink" title="7.温度转换"></a>7.温度转换</h2><p><strong>代码</strong>：</p>
+<pre><code>#include&lt;stdio.h&gt;
+//宏定义提高代码可读性 
+#define bei 1.8 
+#define cha 32
+#define low -273.15
+int main()
+{
+    double num;
+    char c;
+    scanf(&quot;%lf %c&quot;,&amp;num,&amp;c);
+    if(c==&apos;C&apos;&amp;&amp;num&gt;=low)
+    printf(&quot;%.2lf F&quot;,num*bei+cha);
+    else if(c==&apos;F&apos;&amp;&amp;(num-cha)/bei&gt;=low)//计算转化后的是否满足高于绝对零度 
+    printf(&quot;%.2lf C&quot;,(num-cha)/bei);
+    else
+    printf(&quot;invalid&quot;);
+    return 0;
+}</code></pre><h2 id="8-浮点数比较"><a href="#8-浮点数比较" class="headerlink" title="8.浮点数比较"></a>8.浮点数比较</h2><p><strong>题目</strong>：<br>输入只有一行，为三个用空格分隔的浮点数a,b,c（0&lt;a,b,c&lt;100）<br>输出也只有一行，如果 a - b 等于c ，则输出yes，否则输出no。<br>输入样例<br>3.4 2.2 1.3<br>输出样例<br>no<br><strong>分析</strong>：</p>
+<ol>
+<li>浮点数输入用double，防止数据过大</li>
+<li>浮点数比较使用fabs：<br>相等：fabs（m-n）&lt;=1E-6<br>不等: fabs（m-n）&gt;1E-6<br>比较大小:(要满足大小关系且不相等)m&gt;n&amp;&amp;fabs(m-n)&gt;1E-6 或 m-n&gt;1E-6<br>原理：转化为2进制储存，只有可表示为2的幂与整数数乘的浮点数可准确表示，<br>其余的数都是近似值</li>
+</ol>
+<p><strong>代码</strong>：</p>
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;math.h&gt;//fabs函数需要引入数学库
+int main()
+{
+    double a,b,c;
+    scanf(&quot;%lf %lf %lf&quot;,&amp;a,&amp;b,&amp;c);
+    if(fabs(a-b-c)&lt;1E-6)
+    printf(&quot;yes&quot;);
+    else printf(&quot;no&quot;);
+    return 0;
+ } </code></pre><h2 id="9-交党费"><a href="#9-交党费" class="headerlink" title="9.交党费"></a>9.交党费</h2><p><strong>题目</strong>：每月工资收入(税后)在3000元以下(含3000元)者，交纳月工资收入的0.5%；3000元以上至5000元(含5000元)者，交纳1%；5000元以上至10000元(含10000元)者，交纳1.5%；10000元以上者，交纳2%。<br>现请你写一段程序来计算一下某在职教师党员某月应交党费额。<br>输入格式<br>只有一行，为一个浮点数salary(0&lt;salary&lt;20000)，为该教师该月的收入（税后）。<br>输出格式<br>只有一行，为该教师该月应交党费金额（保留1位小数）。<br>输入样例<br>3000<br>输出样例<br>15.0<br><strong>代码</strong></p>
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;math.h&gt;
+int main()
+{
+    const double rate[4]={0.005,0.01,0.015,0.02};//党费比例写在数组中，代码可读性高 
+    double s,d;
+    scanf(&quot;%lf&quot;,&amp;s);
+    if(s&lt;3000||fabs(s-3000)&lt;=1E-6)//小于等于一个浮点数的判断方法 
+    d=rate[0]*s;
+    else if(s&lt;5000||fabs(s-5000)&lt;=1E-6)
+    d=rate[1]*s;
+    else if(s&lt;10000||fabs(s-10000)&lt;=1E-6)
+    d=rate[2]*s;
+    else
+    d=rate[3]*s;
+    printf(&quot;%.1lf&quot;,d);
+    return 0;
+}</code></pre><h2 id="10-未完待续。。。"><a href="#10-未完待续。。。" class="headerlink" title="10.未完待续。。。"></a>10.未完待续。。。</h2>
+      
+      
+
+  <div class="declare" hidden="hidden"></div>
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>蟹蟹您的认可！<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/zfb.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/wx.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Markdown</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">C</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">blog</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">简单</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/creat-qr-code/?size=150x150&date=http://bluestella.com/undefined/%E5%87%A0%E9%81%93%E7%AE%80%E5%8D%95%E7%9A%84c%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B%E9%A2%98/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/undefined/%E5%A4%A7%E4%B8%80%E4%B8%8A%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">大一上学习方法总结</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-递归求阶乘"><span class="toc-number">1.</span> <span class="toc-text">1.递归求阶乘</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-分制转换"><span class="toc-number">2.</span> <span class="toc-text">2.分制转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-判断是否为素数-lt-1000"><span class="toc-number">3.</span> <span class="toc-text">3.判断是否为素数(&lt;1000)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-今天是第几天"><span class="toc-number">4.</span> <span class="toc-text">4.今天是第几天</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-按要求输出"><span class="toc-number">5.</span> <span class="toc-text">5.按要求输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-按要求输出"><span class="toc-number">6.</span> <span class="toc-text">6.按要求输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-温度转换"><span class="toc-number">7.</span> <span class="toc-text">7.温度转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-浮点数比较"><span class="toc-number">8.</span> <span class="toc-text">8.浮点数比较</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-交党费"><span class="toc-number">9.</span> <span class="toc-text">9.交党费</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-未完待续。。。"><span class="toc-number">10.</span> <span class="toc-text">10.未完待续。。。</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="几道简单的c语言编程题" data-title="几道简单的c语言编程题" data-url="http://BlueStella.com/undefined/%E5%87%A0%E9%81%93%E7%AE%80%E5%8D%95%E7%9A%84c%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B%E9%A2%98/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -252,9 +605,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
